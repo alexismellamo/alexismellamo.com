@@ -1,0 +1,2300 @@
+<!doctype html>
+<html lang="en" class="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Developer Profile</title>
+    <meta
+      name="description"
+      content="Professional profile for a frontend engineer"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="./src/global.css" /> -->
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: "#4f46e5", // indigo
+                light: "#818cf8",
+                dark: "#3730a3",
+              },
+              secondary: {
+                DEFAULT: "#ec4899", // pink
+                light: "#f472b6",
+              },
+              dark: {
+                DEFAULT: "#1e293b",
+                light: "#334155",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+            animation: {
+              "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+              float: "float 6s ease-in-out infinite",
+              "spin-slow": "spin 8s linear infinite",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --bg-main: #f8fafc;
+        --bg-card: #ffffff;
+        --text-primary: #1e293b;
+        --text-secondary: #64748b;
+        --border-color: #e2e8f0;
+        --cursor-color: #4f46e5;
+      }
+
+      .dark {
+        --bg-main: #0f172a;
+        --bg-card: #1e293b;
+        --text-primary: #f8fafc;
+        --text-secondary: #cbd5e1;
+        --border-color: #334155;
+        --cursor-color: #818cf8;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg-main);
+        color: var(--text-primary);
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+
+      .light-bg {
+        background-image:
+          radial-gradient(
+            at 80% 0%,
+            hsla(189, 100%, 56%, 0.1) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 0% 50%,
+            hsla(355, 100%, 93%, 0.1) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 80% 100%,
+            hsla(242, 100%, 70%, 0.1) 0px,
+            transparent 50%
+          );
+        background-attachment: fixed;
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .dark-bg {
+        background-image:
+          radial-gradient(
+            at 80% 0%,
+            hsla(242, 100%, 70%, 0.15) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 0% 50%,
+            hsla(355, 100%, 30%, 0.1) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 80% 100%,
+            hsla(189, 100%, 30%, 0.15) 0px,
+            transparent 50%
+          );
+        background-attachment: fixed;
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Animated background */
+      .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+      }
+
+      .particle {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.5;
+        animation-name: float-particle;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+
+      @keyframes float-particle {
+        0% {
+          transform: translateY(0) translateX(0);
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 0.6;
+        }
+        100% {
+          transform: translateY(-20px) translateX(10px);
+          opacity: 0.3;
+        }
+      }
+
+      .gradient-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.3;
+        animation:
+          spin-slow 15s linear infinite,
+          float 10s ease-in-out infinite alternate;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0) translateX(0);
+        }
+        50% {
+          transform: translateY(-20px) translateX(10px);
+        }
+        100% {
+          transform: translateY(0) translateX(0);
+        }
+      }
+
+      @keyframes spin-slow {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Custom cursor */
+      .cursor {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: var(--cursor-color);
+        position: fixed;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.7;
+        transition:
+          width 0.2s,
+          height 0.2s,
+          opacity 0.2s;
+        mix-blend-mode: difference;
+      }
+
+      .cursor-follower {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: transparent;
+        border: 1px solid var(--cursor-color);
+        position: fixed;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        z-index: 9998;
+        opacity: 0.3;
+        transition: 0.1s ease-out;
+      }
+
+      /* Card styles */
+      .card {
+        background-color: var(--bg-card);
+        border-color: var(--border-color);
+        transition:
+          background-color 0.3s ease,
+          border-color 0.3s ease,
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      /* Card hover effects */
+      .hover-card {
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow:
+          0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+
+      /* Button hover effects */
+      .action-button {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+      .action-button::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 5px;
+        height: 5px;
+        background: rgba(255, 255, 255, 0.3);
+        opacity: 0;
+        border-radius: 100%;
+        transform: scale(1, 1) translate(-50%);
+        transform-origin: 50% 50%;
+      }
+      .action-button:hover::after {
+        animation: ripple 1s ease-out;
+      }
+      @keyframes ripple {
+        0% {
+          transform: scale(0, 0);
+          opacity: 0.5;
+        }
+        100% {
+          transform: scale(20, 20);
+          opacity: 0;
+        }
+      }
+
+      /* Badge animation */
+      .badge-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+
+      /* Modal animation */
+      .modal {
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.3s ease,
+          visibility 0.3s;
+      }
+      .modal.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .modal-content {
+        transform: translateY(20px);
+        transition: transform 0.3s ease;
+      }
+      .modal.active .modal-content {
+        transform: translateY(0);
+      }
+
+      /* Gradient text */
+      .gradient-text {
+        background: linear-gradient(90deg, #4f46e5, #ec4899);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+      }
+
+      /* Link hover effect */
+      a:not(.action-button):not(.download-btn) {
+        position: relative;
+      }
+
+      a:not(.action-button):not(.download-btn)::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background: linear-gradient(90deg, #4f46e5, #ec4899);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-out;
+      }
+
+      a:not(.action-button):not(.download-btn):hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+
+      /* Dark mode toggle */
+      .theme-toggle {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 50;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        background-color: var(--bg-card);
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition:
+          background-color 0.3s ease,
+          transform 0.2s ease;
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.1);
+      }
+
+      .theme-toggle svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: var(--text-primary);
+        transition:
+          color 0.3s ease,
+          transform 0.5s ease;
+      }
+
+      /* Timeline styles */
+      .timeline-container {
+        position: relative;
+        padding-left: 1.5rem;
+      }
+
+      .timeline-container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 9px;
+        height: 100%;
+        width: 2px;
+        background: linear-gradient(to bottom, #4f46e5 0%, #ec4899 100%);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 1.5rem;
+      }
+
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .timeline-dot {
+        position: absolute;
+        left: -1.5rem;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: var(--bg-card);
+        border: 2px solid;
+        z-index: 1;
+      }
+
+      .timeline-content {
+        padding-bottom: 1rem;
+      }
+
+      /* Resume download button animation */
+      .download-btn {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .download-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.7s ease;
+      }
+
+      .download-btn:hover::before {
+        left: 100%;
+      }
+
+      /* Hover effects for interactive elements */
+      .hover-effect {
+        position: relative;
+        transition: transform 0.3s ease;
+      }
+
+      .hover-effect::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background: linear-gradient(90deg, #4f46e5, #ec4899);
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease;
+      }
+
+      .hover-effect:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--border-color);
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #c7d2fe;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #818cf8;
+      }
+
+      .dark ::-webkit-scrollbar-thumb {
+        background: #4f46e5;
+      }
+      .dark ::-webkit-scrollbar-thumb:hover {
+        background: #3730a3;
+      }
+
+      /* Link hover effect */
+      a:not(.action-button):not(.download-btn) {
+        position: relative;
+      }
+
+      a:not(.action-button):not(.download-btn)::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: -2px;
+        left: 0;
+        background: linear-gradient(90deg, #4f46e5, #ec4899);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-out;
+      }
+
+      a:not(.action-button):not(.download-btn):hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+    </style>
+  </head>
+  <body
+    class="min-h-screen flex items-center justify-center p-4 light-bg overflow-auto"
+  >
+    <!-- Animated Background Elements -->
+    <div class="animated-bg">
+      <!-- Gradient orbs -->
+      <div
+        class="gradient-orb bg-primary-light"
+        style="width: 300px; height: 300px; top: 10%; left: 10%"
+      ></div>
+      <div
+        class="gradient-orb bg-secondary-light"
+        style="width: 250px; height: 250px; bottom: 15%; right: 10%"
+      ></div>
+      <div
+        class="gradient-orb bg-green-300 dark:bg-green-900"
+        style="width: 200px; height: 200px; bottom: 30%; left: 15%"
+      ></div>
+
+      <!-- Will be populated with particles via JavaScript -->
+    </div>
+    <!-- Cursor Elements -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Dark Mode Toggle -->
+    <button
+      id="theme-toggle"
+      class="theme-toggle"
+      aria-label="Toggle dark mode"
+    >
+      <!-- Sun icon (shown in dark mode) -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="sun-icon hidden"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <!-- Moon icon (shown in light mode) -->
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="moon-icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+
+    <main class="max-w-md w-full space-y-6">
+      <!-- Profile Card -->
+      <section
+        class="hover-card card rounded-2xl shadow-lg overflow-hidden border"
+      >
+        <div class="relative">
+          <!-- Banner Image -->
+          <div class="h-32 bg-gradient-to-r from-primary to-secondary"></div>
+
+          <!-- Profile Image -->
+          <div class="absolute left-1/2 transform -translate-x-1/2 -bottom-16">
+            <div class="relative">
+              <img
+                src="https://placehold.co/120x120/4f46e5/FFFFFF/png?text=YN"
+                alt="Profile picture"
+                class="w-32 h-32 rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg"
+                width="128"
+                height="128"
+              />
+              <div
+                class="absolute bottom-1 right-1 bg-green-400 h-5 w-5 rounded-full border-2 border-white dark:border-gray-800 badge-pulse"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-20 p-6 flex flex-col items-center">
+          <!-- Profile Info -->
+          <h1 class="text-2xl font-bold gradient-text">Your Name</h1>
+          <p class="text-secondary mb-6">Frontend Engineer</p>
+
+          <!-- Social Icons -->
+          <div class="flex items-center space-x-4 mt-2 mb-6">
+            <a
+              href="#"
+              aria-label="Threads profile"
+              class="text-gray-500 hover:text-primary transition-colors hover-effect"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"></path>
+              </svg>
+            </a>
+            <a
+              href="#"
+              aria-label="X profile"
+              class="text-gray-500 hover:text-primary transition-colors hover-effect"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+                ></path>
+              </svg>
+            </a>
+            <a
+              href="#"
+              aria-label="LinkedIn profile"
+              class="text-gray-500 hover:text-primary transition-colors hover-effect"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                ></path>
+                <rect width="4" height="12" x="2" y="9"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a
+              href="#"
+              aria-label="GitHub profile"
+              class="text-gray-500 hover:text-primary transition-colors hover-effect"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+                ></path>
+                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="grid grid-cols-3 gap-3 w-full">
+            <button
+              id="share-btn"
+              class="action-button flex justify-center items-center py-2.5 px-4 rounded-xl text-sm font-medium text-white bg-gradient-to-r from-primary to-primary-light hover:from-primary-dark hover:to-primary shadow-md"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="mr-1.5"
+              >
+                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                <polyline points="16 6 12 2 8 6"></polyline>
+                <line x1="12" y1="2" x2="12" y2="15"></line>
+              </svg>
+              Share
+            </button>
+            <button
+              id="contact-btn"
+              class="action-button flex justify-center items-center py-2.5 px-4 rounded-xl text-sm font-medium text-white bg-gradient-to-r from-secondary-light to-secondary hover:from-secondary hover:to-secondary shadow-md"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="mr-1.5"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                ></path>
+              </svg>
+              Contact
+            </button>
+            <button
+              id="connect-btn"
+              class="action-button flex justify-center items-center py-2.5 px-4 rounded-xl text-sm font-medium text-white bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 shadow-md"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="mr-1.5"
+              >
+                <rect width="20" height="12" x="2" y="6" rx="2"></rect>
+                <circle cx="12" cy="12" r="2"></circle>
+                <path d="M6 12h.01M18 12h.01"></path>
+              </svg>
+              Connect
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience Timeline -->
+      <section
+        class="hover-card card rounded-2xl shadow-lg overflow-hidden border"
+      >
+        <div class="p-6">
+          <h2 class="text-lg font-bold mb-6 flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="mr-2 text-primary"
+            >
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            Experience
+          </h2>
+
+          <div class="timeline-container">
+            <!-- Timeline Item 1 -->
+            <div class="timeline-item">
+              <div class="timeline-dot border-primary"></div>
+              <div class="timeline-content">
+                <div class="flex justify-between items-start mb-1">
+                  <h3 class="font-semibold text-primary">
+                    Senior Frontend Engineer
+                  </h3>
+                  <span
+                    class="text-xs bg-primary-light bg-opacity-20 text-primary px-2 py-1 rounded-full"
+                    >Current</span
+                  >
+                </div>
+                <div class="text-sm text-secondary mb-2">
+                  TechCorp Inc. • 2021 - Present
+                </div>
+                <p class="text-sm">
+                  Led the development of a React-based design system used across
+                  multiple products, improving development speed by 40% and
+                  ensuring consistent UI/UX.
+                </p>
+                <div class="flex flex-wrap gap-1 mt-2">
+                  <span
+                    class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-full"
+                    >React</span
+                  >
+                  <span
+                    class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-full"
+                    >TypeScript</span
+                  >
+                  <span
+                    class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-full"
+                    >Next.js</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="timeline-item">
+              <div class="timeline-dot border-secondary"></div>
+              <div class="timeline-content">
+                <h3 class="font-semibold text-secondary">Frontend Developer</h3>
+                <div class="text-sm text-secondary mb-2">
+                  WebSolutions • 2018 - 2021
+                </div>
+                <p class="text-sm">
+                  Developed and maintained client websites with a focus on
+                  performance optimization and responsive design.
+                </p>
+                <div class="flex flex-wrap gap-1 mt-2">
+                  <span
+                    class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-full"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-full"
+                    >Vue.js</span
+                  >
+                  <span
+                    class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-full"
+                    >CSS</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline Item 3 -->
+            <div class="timeline-item">
+              <div class="timeline-dot border-green-500"></div>
+              <div class="timeline-content">
+                <h3 class="font-semibold text-green-500 dark:text-green-400">
+                  Junior Web Developer
+                </h3>
+                <div class="text-sm text-secondary mb-2">
+                  StartupHub • 2016 - 2018
+                </div>
+                <p class="text-sm">
+                  Collaborated with the design team to implement UI components
+                  and features for a SaaS platform.
+                </p>
+                <div class="flex flex-wrap gap-1 mt-2">
+                  <span
+                    class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-full"
+                    >HTML</span
+                  >
+                  <span
+                    class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-full"
+                    >CSS</span
+                  >
+                  <span
+                    class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-full"
+                    >jQuery</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Timeline Item 4 -->
+            <div class="timeline-item">
+              <div class="timeline-dot border-purple-500"></div>
+              <div class="timeline-content">
+                <h3 class="font-semibold text-purple-500 dark:text-purple-400">
+                  Computer Science Degree
+                </h3>
+                <div class="text-sm text-secondary mb-2">
+                  Tech University • 2012 - 2016
+                </div>
+                <p class="text-sm">
+                  Bachelor's degree in Computer Science with a focus on web
+                  technologies and software engineering.
+                </p>
+                <div class="flex flex-wrap gap-1 mt-2">
+                  <span
+                    class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-full"
+                    >Algorithms</span
+                  >
+                  <span
+                    class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-full"
+                    >Data Structures</span
+                  >
+                  <span
+                    class="text-xs px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-full"
+                    >Web Dev</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Online Profiles -->
+      <section
+        class="hover-card card rounded-2xl shadow-lg overflow-hidden border"
+      >
+        <div class="p-6">
+          <h2 class="text-lg font-bold mb-4 flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="mr-2 text-primary"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+            Online Profiles
+          </h2>
+          <ul class="space-y-3">
+            <li>
+              <a
+                href="#"
+                class="flex items-center p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              >
+                <div
+                  class="flex-shrink-0 w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-500 dark:text-blue-300"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"></path>
+                  </svg>
+                </div>
+                <div class="ml-4 flex-1">
+                  <div class="flex items-center">
+                    <span class="font-medium">Threads</span>
+                  </div>
+                  <span class="text-sm text-blue-600 dark:text-blue-400"
+                    >threads.net/yourusername</span
+                  >
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="text-gray-400"
+                >
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              >
+                <div
+                  class="flex-shrink-0 w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-500 dark:text-blue-300"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
+                    ></path>
+                  </svg>
+                </div>
+                <div class="ml-4 flex-1">
+                  <div class="flex items-center">
+                    <span class="font-medium">Twitter</span>
+                  </div>
+                  <span class="text-sm text-blue-600 dark:text-blue-400"
+                    >twitter.com/yourusername</span
+                  >
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="text-gray-400"
+                >
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              >
+                <div
+                  class="flex-shrink-0 w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-500 dark:text-blue-300"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                    ></path>
+                    <rect width="4" height="12" x="2" y="9"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </div>
+                <div class="ml-4 flex-1">
+                  <div class="flex items-center">
+                    <span class="font-medium">LinkedIn</span>
+                  </div>
+                  <span class="text-sm text-blue-600 dark:text-blue-400"
+                    >linkedin.com/in/yourusername</span
+                  >
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="text-gray-400"
+                >
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+              >
+                <div
+                  class="flex-shrink-0 w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center text-blue-500 dark:text-blue-300"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"
+                    ></path>
+                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                  </svg>
+                </div>
+                <div class="ml-4 flex-1">
+                  <div class="flex items-center">
+                    <span class="font-medium">GitHub</span>
+                  </div>
+                  <span class="text-sm text-blue-600 dark:text-blue-400"
+                    >github.com/yourusername</span
+                  >
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="text-gray-400"
+                >
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Interests -->
+      <section
+        class="hover-card card rounded-2xl shadow-lg overflow-hidden border"
+      >
+        <div class="p-6">
+          <h2 class="text-lg font-bold mb-4 flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="mr-2 text-primary"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" x2="22" y1="12" y2="12"></line>
+              <path
+                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+              ></path>
+            </svg>
+            Interests
+          </h2>
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-indigo-50 text-indigo-700 border border-indigo-100 dark:bg-indigo-900 dark:text-indigo-200 dark:border-indigo-800"
+            >
+              Frontend Development
+            </span>
+            <span
+              class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-yellow-50 text-yellow-700 border border-yellow-100 dark:bg-yellow-900 dark:text-yellow-200 dark:border-yellow-800"
+            >
+              JavaScript
+            </span>
+            <span
+              class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-blue-50 text-blue-700 border border-blue-100 dark:bg-blue-900 dark:text-blue-200 dark:border-blue-800"
+            >
+              TypeScript
+            </span>
+            <span
+              class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-cyan-50 text-cyan-700 border border-cyan-100 dark:bg-cyan-900 dark:text-cyan-200 dark:border-cyan-800"
+            >
+              React
+            </span>
+            <span
+              class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-purple-50 text-purple-700 border border-purple-100 dark:bg-purple-900 dark:text-purple-200 dark:border-purple-800"
+            >
+              Web Performance
+            </span>
+            <span
+              class="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium bg-red-50 text-red-700 border border-red-100 dark:bg-red-900 dark:text-red-200 dark:border-red-800"
+            >
+              Chess
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section
+        class="hover-card card rounded-2xl shadow-lg overflow-hidden border"
+      >
+        <div class="p-6">
+          <h2 class="text-lg font-bold mb-4 flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="mr-2 text-primary"
+            >
+              <path
+                d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+              ></path>
+            </svg>
+            Projects
+          </h2>
+
+          <!-- Recent Repositories -->
+          <div class="space-y-3">
+            <a
+              href="#"
+              class="block p-3 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-primary dark:hover:border-primary hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+            >
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-medium text-primary">personal-website</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    My personal website built with Next.js and Tailwind CSS
+                  </p>
+                </div>
+              </div>
+            </a>
+
+            <a
+              href="#"
+              class="block p-3 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-primary dark:hover:border-primary hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+            >
+              <div class="flex justify-between items-start">
+                <div>
+                  <h3 class="font-medium text-primary">react-chess-app</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                    A chess application built with React and TypeScript
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resume Download Section - Moved to the end -->
+      <section
+        class="hover-card card rounded-2xl shadow-lg overflow-hidden border"
+      >
+        <div class="p-6">
+          <h2 class="text-lg font-bold mb-4 flex items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="mr-2 text-primary"
+            >
+              <path
+                d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+              ></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+            </svg>
+            Resume
+          </h2>
+
+          <div class="flex flex-col items-center">
+            <div class="w-full max-w-xs mb-4">
+              <div
+                class="relative w-full h-56 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden shadow-md"
+              >
+                <!-- Resume Preview -->
+                <div class="absolute inset-0 p-4">
+                  <div
+                    class="h-6 w-24 bg-primary bg-opacity-20 dark:bg-opacity-30 rounded mb-3"
+                  ></div>
+                  <div
+                    class="h-3 w-full bg-gray-200 dark:bg-gray-700 rounded mb-2"
+                  ></div>
+                  <div
+                    class="h-3 w-full bg-gray-200 dark:bg-gray-700 rounded mb-2"
+                  ></div>
+                  <div
+                    class="h-3 w-3/4 bg-gray-200 dark:bg-gray-700 rounded mb-4"
+                  ></div>
+
+                  <div
+                    class="h-5 w-20 bg-primary bg-opacity-20 dark:bg-opacity-30 rounded mb-3"
+                  ></div>
+                  <div
+                    class="h-3 w-full bg-gray-200 dark:bg-gray-700 rounded mb-2"
+                  ></div>
+                  <div
+                    class="h-3 w-full bg-gray-200 dark:bg-gray-700 rounded mb-2"
+                  ></div>
+                  <div
+                    class="h-3 w-2/3 bg-gray-200 dark:bg-gray-700 rounded mb-4"
+                  ></div>
+
+                  <div
+                    class="h-5 w-24 bg-primary bg-opacity-20 dark:bg-opacity-30 rounded mb-3"
+                  ></div>
+                  <div
+                    class="h-3 w-full bg-gray-200 dark:bg-gray-700 rounded mb-2"
+                  ></div>
+                  <div
+                    class="h-3 w-5/6 bg-gray-200 dark:bg-gray-700 rounded"
+                  ></div>
+                </div>
+
+                <!-- PDF Icon Overlay -->
+                <div
+                  class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold py-1 px-2 rounded"
+                >
+                  PDF
+                </div>
+              </div>
+            </div>
+
+            <!-- Download Button -->
+            <a
+              href="#"
+              id="download-resume"
+              class="download-btn flex items-center justify-center py-3 px-6 bg-primary hover:bg-primary-dark text-white font-medium rounded-xl transition-colors shadow-md"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="mr-2"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download Resume
+            </a>
+
+            <p
+              class="text-sm text-gray-500 dark:text-gray-400 mt-3 text-center"
+            >
+              Get a PDF copy of my professional resume
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Modal Backdrop -->
+    <div
+      id="modal-backdrop"
+      class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40 hidden"
+    ></div>
+
+    <!-- Share Modal -->
+    <div
+      id="share-modal"
+      class="modal fixed inset-0 z-50 flex items-center justify-center p-4"
+    >
+      <div
+        class="modal-content max-w-md w-full card rounded-2xl shadow-xl relative"
+      >
+        <!-- Header -->
+        <div
+          class="flex justify-between items-center p-5 border-b border-gray-200 dark:border-gray-700"
+        >
+          <h3 class="text-xl font-bold">Share Profile</h3>
+          <button
+            class="modal-close text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Content -->
+        <div class="p-5">
+          <!-- QR Code -->
+          <div
+            class="flex justify-center p-6 bg-gradient-to-r from-primary to-secondary mb-5 rounded-xl"
+          >
+            <div class="bg-white p-3 rounded-lg shadow-lg">
+              <img
+                src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yourprofile.com"
+                alt="QR Code"
+                class="w-40 h-40"
+              />
+            </div>
+          </div>
+
+          <div class="text-center mb-5">
+            <button
+              class="text-primary font-medium hover:text-primary-dark transition-colors"
+            >
+              Download QR
+            </button>
+          </div>
+
+          <!-- Wallet Options -->
+          <div class="flex justify-center space-x-4 mb-6">
+            <button
+              class="flex items-center px-4 py-2.5 bg-gray-100 dark:bg-gray-800 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            >
+              <span class="mr-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                  <line x1="2" x2="22" y1="10" y2="10"></line>
+                </svg>
+              </span>
+              <span>Apple Wallet</span>
+            </button>
+            <button
+              class="flex items-center px-4 py-2.5 bg-gray-100 dark:bg-gray-800 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+            >
+              <span class="mr-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                  <line x1="2" x2="22" y1="10" y2="10"></line>
+                </svg>
+              </span>
+              <span>Google Wallet</span>
+            </button>
+          </div>
+
+          <!-- Sharing Options -->
+          <div class="space-y-3">
+            <button
+              class="flex items-center justify-between w-full p-4 border border-gray-200 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+            >
+              <div class="flex items-center">
+                <div
+                  class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-500 dark:text-blue-400 mr-3"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                  </svg>
+                </div>
+                <span class="font-medium">Share via Email</span>
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-gray-400"
+              >
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+
+            <button
+              class="flex items-center justify-between w-full p-4 border border-gray-200 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+            >
+              <div class="flex items-center">
+                <div
+                  class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-500 dark:text-green-400 mr-3"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2"></path>
+                    <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                    <circle cx="12" cy="10" r="2"></circle>
+                    <line x1="8" x2="16" y1="2" y2="2"></line>
+                  </svg>
+                </div>
+                <span class="font-medium">Add to contacts (vCard)</span>
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-gray-400"
+              >
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Profile Link -->
+          <div class="mt-6">
+            <div
+              class="flex items-center p-4 border border-gray-200 dark:border-gray-700 rounded-xl bg-gray-50 dark:bg-gray-800"
+            >
+              <input
+                type="text"
+                value="yourprofile.com/username"
+                readonly
+                class="flex-grow bg-transparent outline-none text-gray-600 dark:text-gray-300 font-medium"
+              />
+              <button
+                class="text-primary font-medium ml-2 hover:text-primary-dark transition-colors"
+              >
+                Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div
+      id="contact-modal"
+      class="modal fixed inset-0 z-50 flex items-center justify-center p-4"
+    >
+      <div
+        class="modal-content max-w-md w-full card rounded-2xl shadow-xl relative"
+      >
+        <!-- Header -->
+        <div
+          class="flex justify-between items-center p-5 border-b border-gray-200 dark:border-gray-700"
+        >
+          <h3 class="text-xl font-bold">Contact</h3>
+          <button
+            class="modal-close text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Content -->
+        <div class="p-5 space-y-6">
+          <!-- Email -->
+          <div
+            class="p-4 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-primary dark:hover:border-primary transition-colors"
+          >
+            <div
+              class="flex items-center text-gray-600 dark:text-gray-400 mb-2"
+            >
+              <div
+                class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-500 dark:text-blue-400 mr-3"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+              </div>
+              <span class="font-medium">Email</span>
+            </div>
+            <a
+              href="mailto:youremail@example.com"
+              class="block text-primary font-medium pl-12 hover:text-primary-dark transition-colors"
+              >youremail@example.com</a
+            >
+          </div>
+
+          <!-- Phone -->
+          <div
+            class="p-4 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-primary dark:hover:border-primary transition-colors"
+          >
+            <div
+              class="flex items-center text-gray-600 dark:text-gray-400 mb-2"
+            >
+              <div
+                class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-500 dark:text-green-400 mr-3"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                  ></path>
+                </svg>
+              </div>
+              <span class="font-medium">Phone</span>
+            </div>
+            <a
+              href="tel:+1234567890"
+              class="block text-primary font-medium pl-12 hover:text-primary-dark transition-colors"
+              >+1 (234) 567-890</a
+            >
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="flex space-x-3 pt-2">
+            <button
+              class="flex-1 py-3 px-4 bg-gray-100 dark:bg-gray-800 rounded-xl font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center justify-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="mr-2"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                ></path>
+              </svg>
+              Call
+            </button>
+            <button
+              class="flex-1 py-3 px-4 bg-gray-100 dark:bg-gray-800 rounded-xl font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center justify-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="mr-2"
+              >
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                ></path>
+              </svg>
+              Message
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Connect Modal (Payment) -->
+    <div
+      id="connect-modal"
+      class="modal fixed inset-0 z-50 flex items-center justify-center p-4"
+    >
+      <div
+        class="modal-content max-w-md w-full card rounded-2xl shadow-xl relative"
+      >
+        <!-- Header -->
+        <div
+          class="flex justify-between items-center p-5 border-b border-gray-200 dark:border-gray-700"
+        >
+          <h3 class="text-xl font-bold">Payments</h3>
+          <button
+            class="modal-close text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Content -->
+        <div class="p-5 space-y-6">
+          <!-- PayPal -->
+          <div
+            class="p-4 border border-gray-200 dark:border-gray-700 rounded-xl hover:border-primary dark:hover:border-primary transition-colors"
+          >
+            <div
+              class="flex items-center text-gray-600 dark:text-gray-400 mb-2"
+            >
+              <div
+                class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center text-blue-500 dark:text-blue-400 mr-3"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                  <line x1="6" x2="6" y1="10" y2="14"></line>
+                  <line x1="10" x2="10" y1="10" y2="14"></line>
+                  <line x1="14" x2="14" y1="10" y2="14"></line>
+                  <line x1="18" x2="18" y1="10" y2="14"></line>
+                </svg>
+              </div>
+              <span class="font-medium">PayPal.me</span>
+            </div>
+            <a
+              href="https://paypal.me/yourusername"
+              class="block text-primary font-medium pl-12 hover:text-primary-dark transition-colors"
+              >paypal.me/yourusername</a
+            >
+          </div>
+
+          <!-- Payment Options -->
+          <div class="grid grid-cols-2 gap-3 pt-2">
+            <button
+              class="py-3 px-4 bg-blue-500 text-white rounded-xl font-medium hover:bg-blue-600 transition-colors flex items-center justify-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="mr-2"
+              >
+                <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                <line x1="2" x2="22" y1="10" y2="10"></line>
+              </svg>
+              Send Money
+            </button>
+            <button
+              class="py-3 px-4 bg-gray-100 dark:bg-gray-800 rounded-xl font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors flex items-center justify-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="mr-2"
+              >
+                <path
+                  d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+                ></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+              </svg>
+              Request
+            </button>
+          </div>
+
+          <!-- Recent Transactions -->
+          <div class="pt-4">
+            <h4
+              class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-3"
+            >
+              Recent Transactions
+            </h4>
+            <div class="space-y-3">
+              <div
+                class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
+              >
+                <div class="flex items-center">
+                  <div
+                    class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-500 dark:text-green-400 mr-3"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="9 14 4 9 9 4"></polyline>
+                      <path d="M20 20v-7a4 4 0 0 0-4-4H4"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="font-medium">Received</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                      Mar 24, 2023
+                    </p>
+                  </div>
+                </div>
+                <span class="font-medium text-green-600 dark:text-green-400"
+                  >+$45.00</span
+                >
+              </div>
+
+              <div
+                class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg"
+              >
+                <div class="flex items-center">
+                  <div
+                    class="w-10 h-10 rounded-full bg-red-100 dark:bg-red-900 flex items-center justify-center text-red-500 dark:text-red-400 mr-3"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="15 4 20 9 15 14"></polyline>
+                      <path d="M4 20v-7a4 4 0 0 1 4-4h12"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="font-medium">Sent</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                      Mar 18, 2023
+                    </p>
+                  </div>
+                </div>
+                <span class="font-medium text-red-600 dark:text-red-400"
+                  >-$28.50</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resume Download Modal -->
+    <div
+      id="resume-modal"
+      class="modal fixed inset-0 z-50 flex items-center justify-center p-4"
+    >
+      <div
+        class="modal-content max-w-md w-full card rounded-2xl shadow-xl relative"
+      >
+        <!-- Header -->
+        <div
+          class="flex justify-between items-center p-5 border-b border-gray-200 dark:border-gray-700"
+        >
+          <h3 class="text-xl font-bold">Download Resume</h3>
+          <button
+            class="modal-close text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300 transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Content -->
+        <div class="p-5 space-y-6">
+          <div class="text-center">
+            <div
+              class="w-24 h-24 mx-auto bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                height="40"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-primary"
+              >
+                <path
+                  d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+                ></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <path d="M16 13H8"></path>
+                <path d="M16 17H8"></path>
+                <path d="M10 9H8"></path>
+              </svg>
+            </div>
+            <h4 class="text-lg font-bold mb-2">Your Resume is Ready!</h4>
+            <p class="text-gray-600 dark:text-gray-400 mb-6">
+              Click the button below to download your resume in PDF format.
+            </p>
+
+            <a
+              href="#"
+              id="download-pdf-btn"
+              class="inline-flex items-center justify-center py-3 px-6 bg-primary hover:bg-primary-dark text-white font-medium rounded-xl transition-colors shadow-md"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="mr-2"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download PDF
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Modal functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const modals = {
+          share: document.getElementById("share-modal"),
+          contact: document.getElementById("contact-modal"),
+          connect: document.getElementById("connect-modal"),
+          resume: document.getElementById("resume-modal"),
+        };
+
+        const modalBackdrop = document.getElementById("modal-backdrop");
+
+        // Open modals
+        document
+          .getElementById("share-btn")
+          .addEventListener("click", () => openModal("share"));
+        document
+          .getElementById("contact-btn")
+          .addEventListener("click", () => openModal("contact"));
+        document
+          .getElementById("connect-btn")
+          .addEventListener("click", () => openModal("connect"));
+        document
+          .getElementById("download-resume")
+          .addEventListener("click", (e) => {
+            e.preventDefault();
+            openModal("resume");
+          });
+
+        // Close modals
+        document.querySelectorAll(".modal-close").forEach((button) => {
+          button.addEventListener("click", closeAllModals);
+        });
+
+        // Close if clicking outside
+        window.addEventListener("click", function (event) {
+          if (event.target === modalBackdrop) {
+            closeAllModals();
+          }
+        });
+
+        function openModal(modalName) {
+          // Close any open modals first
+          closeAllModals();
+
+          // Show backdrop
+          modalBackdrop.classList.remove("hidden");
+
+          // Show selected modal
+          modals[modalName].classList.add("active");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeAllModals() {
+          // Hide all modals
+          Object.values(modals).forEach((modal) => {
+            modal.classList.remove("active");
+          });
+
+          // Hide backdrop
+          modalBackdrop.classList.add("hidden");
+          document.body.style.overflow = "";
+        }
+
+        // Dark mode toggle
+        const themeToggle = document.getElementById("theme-toggle");
+        const sunIcon = document.querySelector(".sun-icon");
+        const moonIcon = document.querySelector(".moon-icon");
+        const htmlElement = document.documentElement;
+        const body = document.body;
+
+        // Check for saved theme preference or use system preference
+        const savedTheme = localStorage.getItem("theme");
+        if (
+          savedTheme === "dark" ||
+          (!savedTheme &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+          enableDarkMode();
+        } else {
+          enableLightMode();
+        }
+
+        // Toggle theme on click
+        themeToggle.addEventListener("click", () => {
+          if (htmlElement.classList.contains("dark")) {
+            enableLightMode();
+          } else {
+            enableDarkMode();
+          }
+        });
+
+        function enableDarkMode() {
+          htmlElement.classList.add("dark");
+          moonIcon.classList.add("hidden");
+          sunIcon.classList.remove("hidden");
+          body.classList.remove("light-bg");
+          body.classList.add("dark-bg");
+          localStorage.setItem("theme", "dark");
+        }
+
+        function enableLightMode() {
+          htmlElement.classList.remove("dark");
+          sunIcon.classList.add("hidden");
+          moonIcon.classList.remove("hidden");
+          body.classList.remove("dark-bg");
+          body.classList.add("light-bg");
+          localStorage.setItem("theme", "light");
+        }
+
+        // Resume download functionality
+        document
+          .getElementById("download-pdf-btn")
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+            // In a real implementation, this would trigger the actual PDF download
+            // For this demo, we'll just show a success message
+            alert("Resume downloaded successfully!");
+            closeAllModals();
+          });
+
+        // Custom cursor
+        const cursor = document.querySelector(".cursor");
+        const cursorFollower = document.querySelector(".cursor-follower");
+
+        document.addEventListener("mousemove", function (e) {
+          cursor.style.left = e.clientX + "px";
+          cursor.style.top = e.clientY + "px";
+
+          setTimeout(function () {
+            cursorFollower.style.left = e.clientX + "px";
+            cursorFollower.style.top = e.clientY + "px";
+          }, 100);
+        });
+
+        // Cursor effects for interactive elements
+        const links = document.querySelectorAll("a, button");
+
+        links.forEach((link) => {
+          link.addEventListener("mouseenter", () => {
+            cursor.style.width = "15px";
+            cursor.style.height = "15px";
+            cursor.style.opacity = "1";
+            cursorFollower.style.width = "45px";
+            cursorFollower.style.height = "45px";
+          });
+
+          link.addEventListener("mouseleave", () => {
+            cursor.style.width = "20px";
+            cursor.style.height = "20px";
+            cursor.style.opacity = "0.7";
+            cursorFollower.style.width = "40px";
+            cursorFollower.style.height = "40px";
+          });
+        });
+
+        // Create animated background particles
+        const animatedBg = document.querySelector(".animated-bg");
+
+        // Create particles
+        for (let i = 0; i < 25; i++) {
+          const particle = document.createElement("div");
+          particle.classList.add("particle");
+
+          // Randomize particle properties
+          const size = Math.random() * 10 + 5;
+          const posX = Math.random() * window.innerWidth;
+          const posY = Math.random() * window.innerHeight;
+          const delay = Math.random() * 5;
+          const duration = Math.random() * 10 + 10;
+
+          // Light mode particles
+          const lightColor = `hsla(${
+            Math.random() * 220 + 180
+          }, 70%, 75%, 0.3)`;
+          // Dark mode particles
+          const darkColor = `hsla(${Math.random() * 220 + 180}, 70%, 30%, 0.3)`;
+
+          particle.style.width = `${size}px`;
+          particle.style.height = `${size}px`;
+          particle.style.left = `${posX}px`;
+          particle.style.top = `${posY}px`;
+          particle.style.animationDuration = `${duration}s`;
+          particle.style.animationDelay = `${delay}s`;
+
+          // Set color based on mode
+          if (htmlElement.classList.contains("dark")) {
+            particle.style.backgroundColor = darkColor;
+          } else {
+            particle.style.backgroundColor = lightColor;
+          }
+
+          animatedBg.appendChild(particle);
+        }
+
+        // Update particles color on theme change
+        themeToggle.addEventListener("click", () => {
+          const particles = document.querySelectorAll(".particle");
+
+          particles.forEach((particle) => {
+            // Update colors based on new theme
+            if (htmlElement.classList.contains("dark")) {
+              const darkColor = `hsla(${
+                Math.random() * 220 + 180
+              }, 70%, 30%, 0.3)`;
+              particle.style.backgroundColor = darkColor;
+            } else {
+              const lightColor = `hsla(${
+                Math.random() * 220 + 180
+              }, 70%, 75%, 0.3)`;
+              particle.style.backgroundColor = lightColor;
+            }
+          });
+        });
+
+        // Disable default cursor
+        document.body.style.cursor = "none";
+
+        // Re-enable default cursor for mobile devices
+        function isMobileDevice() {
+          return (
+            window.innerWidth <= 768 ||
+            "ontouchstart" in window ||
+            navigator.maxTouchPoints > 0
+          );
+        }
+
+        if (isMobileDevice()) {
+          document.body.style.cursor = "auto";
+          cursor.style.display = "none";
+          cursorFollower.style.display = "none";
+        }
+
+        // Check window resize for mobile devices
+        window.addEventListener("resize", function () {
+          if (isMobileDevice()) {
+            document.body.style.cursor = "auto";
+            cursor.style.display = "none";
+            cursorFollower.style.display = "none";
+          } else {
+            document.body.style.cursor = "none";
+            cursor.style.display = "block";
+            cursorFollower.style.display = "block";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

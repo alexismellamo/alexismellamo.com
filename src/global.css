@@ -1,0 +1,413 @@
+@import "tailwindcss";
+
+:root {
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --border-color: #e2e8f0;
+  --cursor-color: #4f46e5;
+}
+
+.dark {
+  --bg-main: #0f172a;
+  --bg-card: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --border-color: #334155;
+  --cursor-color: #818cf8;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.light-bg {
+  background-image: radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, hsla(242, 100%, 70%, 0.1) 0px, transparent 50%);
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.dark-bg {
+  background-image: radial-gradient(at 80% 0%, hsla(242, 100%, 70%, 0.15) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsla(355, 100%, 30%, 0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, hsla(189, 100%, 30%, 0.15) 0px, transparent 50%);
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background */
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation-name: float-particle;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes float-particle {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.3;
+  }
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: spin-slow 15s linear infinite, float 10s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Custom cursor */
+.cursor {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--cursor-color);
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.7;
+  transition: width 0.2s, height 0.2s, opacity 0.2s;
+  mix-blend-mode: difference;
+}
+
+.cursor-follower {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid var(--cursor-color);
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.3;
+  transition: 0.1s ease-out;
+}
+
+/* Card styles */
+.card {
+  background-color: var(--bg-card);
+  border-color: var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow
+    0.3s ease;
+}
+
+/* Card hover effects */
+.hover-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Button hover effects */
+.action-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.action-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.3);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+.action-button:hover::after {
+  animation: ripple 1s ease-out;
+}
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(20, 20);
+    opacity: 0;
+  }
+}
+
+/* Badge animation */
+.badge-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Modal animation */
+.modal {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s;
+}
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+.modal-content {
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+.modal.active .modal-content {
+  transform: translateY(0);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(90deg, #4f46e5, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Link hover effect */
+a:not(.action-button):not(.download-btn) {
+  position: relative;
+}
+
+a:not(.action-button):not(.download-btn)::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(90deg, #4f46e5, #ec4899);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+a:not(.action-button):not(.download-btn):hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Dark mode toggle */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 50;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--bg-card);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+.theme-toggle svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--text-primary);
+  transition: color 0.3s ease, transform 0.5s ease;
+}
+
+/* Timeline styles */
+.timeline-container {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.timeline-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 9px;
+  height: 100%;
+  width: 2px;
+  background: linear-gradient(to bottom, #4f46e5 0%, #ec4899 100%);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -1.5rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--bg-card);
+  border: 2px solid;
+  z-index: 1;
+}
+
+.timeline-content {
+  padding-bottom: 1rem;
+}
+
+/* Resume download button animation */
+.download-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.download-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.7s ease;
+}
+
+.download-btn:hover::before {
+  left: 100%;
+}
+
+/* Hover effects for interactive elements */
+.hover-effect {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.hover-effect::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(90deg, #4f46e5, #ec4899);
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+.hover-effect:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c7d2fe;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #818cf8;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #4f46e5;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #3730a3;
+}
+
+/* Link hover effect */
+a:not(.action-button):not(.download-btn) {
+  position: relative;
+}
+
+a:not(.action-button):not(.download-btn)::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(90deg, #4f46e5, #ec4899);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+a:not(.action-button):not(.download-btn):hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
